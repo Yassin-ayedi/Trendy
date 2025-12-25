@@ -57,32 +57,10 @@ The Data Lake is organized into three containers following best practices:
 ---
 
 ## 📁 Repository Structure
-.
-├── extract/
-│ └── Local extraction scripts (VS Code)
-│ - Fetch data from external sources
-│ - Upload raw data directly into the Bronze layer
-│ - Uses Azure extensions & credentials
-│
-├── transform/
-│ └── Azure Synapse PySpark notebooks
-│ - Data cleaning
-│ - Data transformation
-│ - Bronze → Silver → Gold
-│
-├── load(sql)/
-│ └── SQL scripts & notebooks (Azure Synapse)
-│ - Fact table loading
-│ - Aggregations
-│ - Warehouse modeling
-│
-├── synapse_publish/
-│ └── Auto-generated Azure Synapse artifacts
-│ - Published notebooks
-│ - Pipelines
-│ - Queries
-│ - Workspace configuration
-│
+├── extract/                    # Local VS Code extraction scripts
+├── transform/                  # Azure Synapse PySpark notebooks  
+├── load(sql)/                  # SQL scripts & notebooks
+├── synapse/                    # Auto-generated Synapse artifacts
 └── README.md
 
 ---
