@@ -58,9 +58,13 @@ The Data Lake is organized into three containers following best practices:
 
 ## 📁 Repository Structure
 ├── extract/                    # Local VS Code extraction scripts
+
 ├── transform/                  # Azure Synapse PySpark notebooks  
+
 ├── load(sql)/                  # SQL scripts & notebooks
+
 ├── synapse/                    # Auto-generated Synapse artifacts
+
 └── README.md
 
 ---
