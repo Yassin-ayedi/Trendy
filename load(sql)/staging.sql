@@ -1,0 +1,41 @@
+-- CREATE EXTERNAL TABLE stg_social_popularity
+-- (
+--     job NVARCHAR(100),
+--     tool NVARCHAR(100),
+--     year INT,
+--     month INT,
+--     day INT,
+--     source NVARCHAR(50),
+--     job_engagement FLOAT,
+--     tool_mentions INT,
+--     ingestion_time DATETIME
+-- )
+-- WITH (
+--     LOCATION = '/social_popularity/',
+--     DATA_SOURCE = SocialGold,
+--     FILE_FORMAT = ParquetFormat
+-- );
+
+-- CREATE EXTERNAL TABLE stg_fact_demand
+-- (
+--     job_name NVARCHAR(100),
+--     skill NVARCHAR(100),
+--     job_location NVARCHAR(50),
+--     year INT,
+--     month INT,
+--     day INT,
+--     job_postings INT
+-- )
+-- WITH (
+--     LOCATION = '/jobs/',
+--     DATA_SOURCE = SocialGold,
+--     FILE_FORMAT = ParquetFormat
+-- );
+
+-- SELECT * from stg_fact_demand
+-- SELECT *
+-- FROM stg_fact_demand
+-- WHERE ISNUMERIC(year) = 0
+--    OR ISNUMERIC(month) = 0
+--    OR ISNUMERIC(day) = 0;
+

@@ -1,0 +1,76 @@
+-- Insert into dim_date
+-- INSERT INTO dim_date (full_date, year, month, day)
+-- SELECT DISTINCT 
+--     CAST(
+--         CONCAT(
+--             CAST(year AS VARCHAR(4)), '-', 
+--             RIGHT('0' + CAST(CAST(month AS INT) AS VARCHAR(2)), 2), '-', 
+--             RIGHT('0' + CAST(CAST(day AS INT) AS VARCHAR(2)), 2)
+--         ) AS DATE
+--     ) AS full_date,
+--     year,
+--     month,
+--     day
+-- FROM stg_fact_demand st
+-- WHERE year IS NOT NULL
+--   AND month IS NOT NULL
+--   AND day IS NOT NULL
+--   AND NOT EXISTS (
+--       SELECT 1 
+--       FROM dim_date d
+--       WHERE d.full_date = CAST(
+--           CONCAT(
+--               CAST(st.year AS VARCHAR(4)), '-', 
+--               RIGHT('0' + CAST(CAST(st.month AS INT) AS VARCHAR(2)), 2), '-', 
+--               RIGHT('0' + CAST(CAST(st.day AS INT) AS VARCHAR(2)), 2)
+--           ) AS DATE
+--       )
+--   );
+
+
+
+-- -- Insert into dim_tools
+-- INSERT INTO dim_tools (tool_name)
+-- SELECT DISTINCT skill
+-- FROM stg_fact_demand st
+-- WHERE NOT EXISTS (
+--     SELECT 1 FROM dim_tools t
+--     WHERE t.tool_name = st.skill
+-- );
+
+-- -- Insert into dim_domains
+-- INSERT INTO dim_domains (domain_name)
+-- SELECT DISTINCT job_name
+-- FROM stg_fact_demand st
+-- WHERE NOT EXISTS (
+--     SELECT 1 FROM dim_domains j
+--     WHERE j.domain_name = st.job_name
+-- );
+
+-- Insert into dim_location
+-- INSERT INTO dim_location (location_name)
+-- SELECT DISTINCT job_location
+-- FROM stg_fact_demand st
+-- WHERE NOT EXISTS (
+--     SELECT 1 FROM dim_location l
+--     WHERE l.location_name = st.job_location
+-- );
+
+-- Insert into fact_demand
+-- INSERT INTO fact_demand (date_id, tool_id, domain_id, location_id, job_posting)
+-- SELECT
+--     d.date_id,
+--     t.tool_id,
+--     j.domain_id,
+--     l.location_id,
+--     st.job_postings
+-- FROM stg_fact_demand st
+-- JOIN dim_date d
+--     ON d.year = st.year AND d.month = st.month AND d.day = st.day
+-- JOIN dim_tools t
+--     ON t.tool_name = st.skill
+-- JOIN dim_domains j
+--     ON j.domain_name = st.job_name
+-- JOIN dim_location l
+--     ON l.location_name = st.job_location;
+

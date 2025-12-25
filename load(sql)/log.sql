@@ -1,0 +1,18 @@
+-- SELECT 
+--     date_id,
+--     tool_id,
+--     domain_id,
+--     source_id,
+--     job_engagement,
+--     tool_mentions,
+--     COUNT(*) AS duplicate_count
+-- FROM fact_social_popularity
+-- GROUP BY 
+--     date_id,
+--     tool_id,
+--     domain_id,
+--     source_id,
+--     job_engagement,
+--     tool_mentions
+-- HAVING COUNT(*) > 1;
+SELECT * from fact_social_popularity
