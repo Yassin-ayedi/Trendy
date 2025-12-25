@@ -22,6 +22,7 @@ These sources are used to measure **popularity** based on activity and mentions.
 
 ### Historical demand
 - CSV databases containing **past years market data**
+- [Jobs & Market Demand Dataset (Kaggle)](https://www.kaggle.com/datasets/9c43f5be22f5b932373950547cbaf31cabbfa195b28ede5ab33d0f2f77c1e067)
 - Used to measure **job and tool demand over time**
 
 ---
