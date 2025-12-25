@@ -1,0 +1,17 @@
+{
+	"name": "log",
+	"properties": {
+		"content": {
+			"query": "-- SELECT \n--     date_id,\n--     tool_id,\n--     domain_id,\n--     source_id,\n--     job_engagement,\n--     tool_mentions,\n--     COUNT(*) AS duplicate_count\n-- FROM fact_social_popularity\n-- GROUP BY \n--     date_id,\n--     tool_id,\n--     domain_id,\n--     source_id,\n--     job_engagement,\n--     tool_mentions\n-- HAVING COUNT(*) > 1;\nSELECT * from fact_social_popularity",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "metadata",
+	"properties": {
+		"content": {
+			"query": "-- Create ETL metadata table\nCREATE TABLE etl_metadata\n(\n    last_run_time DATETIME\n)\nWITH\n(\n    DISTRIBUTION = ROUND_ROBIN\n);\n\n\nINSERT INTO etl_metadata (last_run_time)\nVALUES ('1900-01-01 00:00:00');\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

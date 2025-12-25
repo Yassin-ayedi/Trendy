@@ -1,0 +1,17 @@
+{
+	"name": "tables cration",
+	"properties": {
+		"content": {
+			"query": "CREATE TABLE dim_date (\n    date_id INT IDENTITY(1,1) NOT NULL,\n    full_date DATE,\n    year INT,\n    month INT,\n    day INT,\n    CONSTRAINT PK_dim_date PRIMARY KEY NONCLUSTERED (date_id) NOT ENFORCED\n);\n\nCREATE TABLE dim_tools (\n    tool_id INT IDENTITY(1,1) NOT NULL,\n    tool_name VARCHAR(255),\n    CONSTRAINT PK_dim_tools PRIMARY KEY NONCLUSTERED (tool_id) NOT ENFORCED \n);\n\nCREATE TABLE dim_domains (\n    domain_id INT IDENTITY(1,1) NOT NULL,\n    domain_name VARCHAR(255),\n    CONSTRAINT PK_dim_domains PRIMARY KEY NONCLUSTERED (domain_id) NOT ENFORCED \n);\n\nCREATE TABLE dim_source (\n    source_id INT IDENTITY(1,1) NOT NULL,\n    source_name VARCHAR(50),\n    CONSTRAINT PK_dim_source PRIMARY KEY NONCLUSTERED (source_id) NOT ENFORCED \n);\n\nCREATE TABLE fact_social_popularity (\n    popularity_id INT IDENTITY(1,1) NOT NULL,\n    date_id INT NOT NULL,    \n    tool_id INT NOT NULL,\n    domain_id INT NOT NULL,\n    source_id INT NOT NULL,\n    job_engagement FLOAT,\n    tool_mentions INT,\n    CONSTRAINT PK_fact_social_popularity PRIMARY KEY NONCLUSTERED (popularity_id) NOT ENFORCED \n);\n\n\nCREATE TABLE dim_location (\n    location_id INT IDENTITY(1,1) NOT NULL,\n    location_name VARCHAR(255),\n    CONSTRAINT PK_dim_location PRIMARY KEY NONCLUSTERED (location_id) NOT ENFORCED \n);\n\nCREATE TABLE fact_demand (\n    demand_id INT IDENTITY(1,1) NOT NULL,\n    date_id INT NOT NULL,    \n    tool_id INT NOT NULL,\n    domain_id INT NOT NULL,\n    location_id INT NOT NULL,\n    job_posting INT,\n    CONSTRAINT PK_fact_demand PRIMARY KEY NONCLUSTERED (demand_id) NOT ENFORCED \n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

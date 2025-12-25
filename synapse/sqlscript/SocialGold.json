@@ -1,0 +1,17 @@
+{
+	"name": "SocialGold",
+	"properties": {
+		"content": {
+			"query": "CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Trendy!123';\n\nCREATE DATABASE SCOPED CREDENTIAL MyDatalakeCred\nWITH IDENTITY = 'Managed Identity';\n\nCREATE EXTERNAL DATA SOURCE SocialGold\nWITH (\n    LOCATION = 'abfss://gold@datalakeyassin.dfs.core.windows.net'\n);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

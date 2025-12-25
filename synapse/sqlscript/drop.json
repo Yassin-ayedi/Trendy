@@ -1,0 +1,17 @@
+{
+	"name": "drop",
+	"properties": {
+		"content": {
+			"query": "TRUNCATE TABLE fact_social_popularity;\nTRUNCATE TABLE dim_date;\nTRUNCATE TABLE dim_tools;\nTRUNCATE TABLE dim_domains;\nTRUNCATE TABLE dim_source;\n-- If exists\nTRUNCATE TABLE etl_metadata;\nINSERT INTO etl_metadata (last_run_time)\nVALUES ('1900-01-01 00:00:00');",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "staging",
+	"properties": {
+		"content": {
+			"query": "-- CREATE EXTERNAL TABLE stg_social_popularity\n-- (\n--     job NVARCHAR(100),\n--     tool NVARCHAR(100),\n--     year INT,\n--     month INT,\n--     day INT,\n--     source NVARCHAR(50),\n--     job_engagement FLOAT,\n--     tool_mentions INT,\n--     ingestion_time DATETIME\n-- )\n-- WITH (\n--     LOCATION = '/social_popularity/',\n--     DATA_SOURCE = SocialGold,\n--     FILE_FORMAT = ParquetFormat\n-- );\n\n-- CREATE EXTERNAL TABLE stg_fact_demand\n-- (\n--     job_name NVARCHAR(100),\n--     skill NVARCHAR(100),\n--     job_location NVARCHAR(50),\n--     year INT,\n--     month INT,\n--     day INT,\n--     job_postings INT\n-- )\n-- WITH (\n--     LOCATION = '/jobs/',\n--     DATA_SOURCE = SocialGold,\n--     FILE_FORMAT = ParquetFormat\n-- );\n\n-- SELECT * from stg_fact_demand\n-- SELECT *\n-- FROM stg_fact_demand\n-- WHERE ISNUMERIC(year) = 0\n--    OR ISNUMERIC(month) = 0\n--    OR ISNUMERIC(day) = 0;\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

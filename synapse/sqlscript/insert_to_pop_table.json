@@ -1,0 +1,17 @@
+{
+	"name": "insert_to_pop_table",
+	"properties": {
+		"content": {
+			"query": "INSERT INTO dim_date (full_date, year, month, day)\nSELECT DISTINCT \n    CAST(CONCAT(year,'-',month,'-',day) AS DATE) AS full_date,\n    year,\n    month,\n    day\nFROM stg_social_popularity st\nWHERE NOT EXISTS (\n    SELECT 1 \n    FROM dim_date d\n    WHERE d.full_date = CAST(CONCAT(st.year,'-',st.month,'-',st.day) AS DATE)\n);\n\n\nINSERT INTO dim_tools (tool_name)\nSELECT DISTINCT tool\nFROM stg_social_popularity st\nWHERE NOT EXISTS (\n    SELECT 1 FROM dim_tools t\n    WHERE t.tool_name = st.tool\n);\n\n\nINSERT INTO dim_domains (domain_name)\nSELECT DISTINCT job\nFROM stg_social_popularity st\nWHERE NOT EXISTS (\n    SELECT 1 FROM dim_domains j\n    WHERE j.domain_name = st.job\n);\n\nINSERT INTO dim_source (source_name)\nSELECT DISTINCT source\nFROM stg_social_popularity st\nWHERE NOT EXISTS (\n    SELECT 1 FROM dim_source s\n    WHERE s.source_name = st.source\n);\n\nINSERT INTO fact_social_popularity (date_id, tool_id, domain_id, source_id, job_engagement, tool_mentions)\nSELECT\n    d.date_id,\n    t.tool_id,\n    j.domain_id,\n    s.source_id,\n    st.job_engagement,\n    st.tool_mentions\nFROM stg_social_popularity st\nJOIN dim_date d\n    ON d.year = st.year AND d.month = st.month AND d.day = st.day\nJOIN dim_tools t\n    ON t.tool_name = st.tool\nJOIN dim_domains j\n    ON j.domain_name = st.job\nJOIN dim_source s\n    ON s.source_name = st.source\nWHERE st.ingestion_time > (SELECT MAX(last_run_time) FROM etl_metadata);\n\nUPDATE etl_metadata\nSET last_run_time = CURRENT_TIMESTAMP\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

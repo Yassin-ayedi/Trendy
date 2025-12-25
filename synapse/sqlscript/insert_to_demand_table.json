@@ -1,0 +1,17 @@
+{
+	"name": "insert_to_demand_table",
+	"properties": {
+		"content": {
+			"query": "-- Insert into dim_date\n-- INSERT INTO dim_date (full_date, year, month, day)\n-- SELECT DISTINCT \n--     CAST(\n--         CONCAT(\n--             CAST(year AS VARCHAR(4)), '-', \n--             RIGHT('0' + CAST(CAST(month AS INT) AS VARCHAR(2)), 2), '-', \n--             RIGHT('0' + CAST(CAST(day AS INT) AS VARCHAR(2)), 2)\n--         ) AS DATE\n--     ) AS full_date,\n--     year,\n--     month,\n--     day\n-- FROM stg_fact_demand st\n-- WHERE year IS NOT NULL\n--   AND month IS NOT NULL\n--   AND day IS NOT NULL\n--   AND NOT EXISTS (\n--       SELECT 1 \n--       FROM dim_date d\n--       WHERE d.full_date = CAST(\n--           CONCAT(\n--               CAST(st.year AS VARCHAR(4)), '-', \n--               RIGHT('0' + CAST(CAST(st.month AS INT) AS VARCHAR(2)), 2), '-', \n--               RIGHT('0' + CAST(CAST(st.day AS INT) AS VARCHAR(2)), 2)\n--           ) AS DATE\n--       )\n--   );\n\n\n\n-- -- Insert into dim_tools\n-- INSERT INTO dim_tools (tool_name)\n-- SELECT DISTINCT skill\n-- FROM stg_fact_demand st\n-- WHERE NOT EXISTS (\n--     SELECT 1 FROM dim_tools t\n--     WHERE t.tool_name = st.skill\n-- );\n\n-- -- Insert into dim_domains\n-- INSERT INTO dim_domains (domain_name)\n-- SELECT DISTINCT job_name\n-- FROM stg_fact_demand st\n-- WHERE NOT EXISTS (\n--     SELECT 1 FROM dim_domains j\n--     WHERE j.domain_name = st.job_name\n-- );\n\n-- Insert into dim_location\n-- INSERT INTO dim_location (location_name)\n-- SELECT DISTINCT job_location\n-- FROM stg_fact_demand st\n-- WHERE NOT EXISTS (\n--     SELECT 1 FROM dim_location l\n--     WHERE l.location_name = st.job_location\n-- );\n\n-- Insert into fact_demand\n-- INSERT INTO fact_demand (date_id, tool_id, domain_id, location_id, job_posting)\n-- SELECT\n--     d.date_id,\n--     t.tool_id,\n--     j.domain_id,\n--     l.location_id,\n--     st.job_postings\n-- FROM stg_fact_demand st\n-- JOIN dim_date d\n--     ON d.year = st.year AND d.month = st.month AND d.day = st.day\n-- JOIN dim_tools t\n--     ON t.tool_name = st.skill\n-- JOIN dim_domains j\n--     ON j.domain_name = st.job_name\n-- JOIN dim_location l\n--     ON l.location_name = st.job_location;\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "trendy",
+				"poolName": "trendy"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
