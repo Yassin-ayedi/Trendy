@@ -77,7 +77,6 @@ Planned:
 - Secure credentials (Key Vault)
 - Parameterized paths and resources
 
-> 📌 **Placeholder**: Configuration documentation will be added here.
 
 ---
 
@@ -114,11 +113,8 @@ Planned:
 - Data lives exclusively in the Data Lake
 
 ---
+## 📄 Project Report
 
+[📘 Download the full project report (PDF)](Trendy_Data_Warehouse_Report.pdf)
 
-
-
-
-
-The GitHub repository is organized as follows:
 
